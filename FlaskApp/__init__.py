@@ -18,3 +18,10 @@ db.init_app(app)
 from . import auth
 app.register_blueprint(auth.bp)
 
+@app.route('/')
+def login():
+   return render_template('login.html')
+
+@app.route('/en')
+def login_en():
+   return render_template('login_en.html')
