@@ -20,8 +20,8 @@ app.register_blueprint(auth.bp)
 
 @app.route('/')
 def login():
-   return render_template('/login.html')
+   return render_template('/templates/login.html')
 
 @app.route('/en')
 def login_en():
-   return render_template('/login_en.html')
+   return render_template('/templates/login_en.html')
