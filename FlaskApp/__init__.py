@@ -4,7 +4,8 @@ import os
 app = Flask(__name__)
 app.config.from_mapping(
    SECRET_KEY='dev',
-   DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
+   PROJECT_ROOT = os.path.dirname(os.path.realpath(__file__))
+   DATABASE = os.path.join(PROJECT_ROOT, 'tmp', 'test.db')
    )
 
 @app.route('/test')
