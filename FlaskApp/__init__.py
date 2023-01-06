@@ -2,7 +2,7 @@ from flask import Flask, render_template
 import os
 
 app = Flask(__name__, instance_relative_config=True)
-print(os.path.join('db', 'db.sqlite'))
+print(os.path.join('./var/www/corendon_raspi/FlaskApp/db', 'db.sqlite'))
 app.config.from_mapping(
    SECRET_KEY='dev',
    DATABASE=os.path.join(app.instance_path, 'db', 'db.sqlite'),
