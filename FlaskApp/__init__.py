@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 import os
-from . import db
+import db
 
 app = Flask(__name__)
 app.config.from_mapping(
