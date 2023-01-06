@@ -4,7 +4,7 @@ import os
 app = Flask(__name__)
 app.config.from_mapping(
    SECRET_KEY='dev',
-   PROJECT_ROOT = os.path.dirname(os.path.realpath(__file__))
+   PROJECT_ROOT = os.path.dirname(os.path.realpath(__file__)),
    DATABASE = os.path.join(PROJECT_ROOT, 'tmp', 'test.db')
    )
 
