@@ -1,11 +1,11 @@
 from flask import Flask, render_template
 import os
+from . import db
 
 app = Flask(__name__)
-PROJECT_ROOT = os.path.dirname(os.path.realpath(__file__))
 app.config.from_mapping(
    SECRET_KEY='dev',
-   DATABASE = os.path.join(PROJECT_ROOT, 'tmp', 'test.db')
+   DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
    )
 
 @app.route('/test')
