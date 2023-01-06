@@ -5,7 +5,8 @@ app = Flask(__name__, instance_relative_config=True)
 # print(os.path.join('/var/www/corendon_raspi/FlaskApp/db', 'db.sqlite'))
 app.config.from_mapping(
    SECRET_KEY='dev',
-   DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
+   DATABASE=os.path.join(os.path.dirname(os.path.realpath(__file__)),
+      'todos.db'),
    )
 @app.route('/test')
 def test():
