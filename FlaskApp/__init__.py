@@ -7,7 +7,7 @@ app = Flask(__name__, instance_relative_config=True)
 #    SECRET_KEY='dev',
 #    DATABASE=os.path.join(app.instance_path, 'db', 'db.sqlite'),
 #    )
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+app.config['DATABASE'] = 'sqlite:///data.db'
 @app.route('/test')
 def test():
    return "I can successfully copy and paste!"
