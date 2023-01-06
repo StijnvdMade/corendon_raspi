@@ -3,11 +3,10 @@ import os
 
 app = Flask(__name__, instance_relative_config=True)
 # print(os.path.join('/var/www/corendon_raspi/FlaskApp/db', 'db.sqlite'))
-# app.config.from_mapping(
-#    SECRET_KEY='dev',
-#    DATABASE=os.path.join(app.instance_path, 'db', 'db.sqlite'),
-#    )
-app.config['DATABASE'] = 'sASDASDSA'
+app.config.from_mapping(
+   SECRET_KEY='dev',
+   DATABASE=os.path.join('SDSDD'),
+   )
 @app.route('/test')
 def test():
    return "I can successfully copy and paste!"
