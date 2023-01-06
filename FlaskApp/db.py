@@ -1,7 +1,7 @@
 import sqlite3
 
 import click
-from FlaskApp import current_app, g
+from flask import current_app, g
 
 
 def get_db():
