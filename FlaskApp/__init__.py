@@ -1,51 +1,40 @@
 from flask import Flask, render_template
 import os
 
-def create_app(test_config=None):
-   app = Flask(__name__, instance_relative_config=True)
-   # print(os.path.join('/var/www/corendon_raspi/FlaskApp/db', 'db.sqlite'))
-   app.config.from_mapping(
-      SECRET_KEY='dev',
-      DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
-      )
+app = Flask(__name__, instance_relative_config=True)
+# print(os.path.join('/var/www/corendon_raspi/FlaskApp/db', 'db.sqlite'))
+app.config.from_mapping(
+   SECRET_KEY='dev',
+   DATABASE=os.path.join(app.instance_path, 'db.sqlite'),
+   )
 
+# ensure the instance folder exists
+try:
+   os.makedirs(app.instance_path)
+except OSError:
+   pass
 
-   if test_config is None:
-      # load the instance config, if it exists, when not testing
-      app.config.from_pyfile('config.py', silent=True)
-   else:
-      # load the test config if passed in
-      app.config.from_mapping(test_config)
+@app.route('/test')
+def test():
+   return "I can successfully copy and paste!"
 
-   # ensure the instance folder exists
-   try:
-      os.makedirs(app.instance_path)
-   except OSError:
-      pass
+@app.route('/temp')
+def temp():
+    return "deze pagina werkt"
 
-   @app.route('/test')
-   def test():
-      return "I can successfully copy and paste!"
+if __name__ == "__main__":
+   app.run()
 
-   @app.route('/temp')
-   def temp():
-      return "deze pagina werkt"
+from . import db
+db.init_app(app)
 
-   if __name__ == "__main__":
-      app.run()
+from . import auth
+app.register_blueprint(auth.bp)
 
-   from . import db
-   db.init_app(app)
+@app.route('/')
+def login():
+   return render_template('login.html')
 
-   from . import auth
-   app.register_blueprint(auth.bp)
-
-   @app.route('/')
-   def login():
-      return render_template('login.html')
-
-   @app.route('/en')
-   def login_en():
-      return render_template('login_en.html')
-   
-   return app
+@app.route('/en')
+def login_en():
+   return render_template('login_en.html')
