@@ -7,7 +7,8 @@
 --   ticket TEXT NOT NULL
 -- );
 -- Create database Corendon_Wifi;
-USE Corendon_Wifi;
+-- USE Corendon_Wifi;
+DROP TABLE IF EXISTS Wifi_Registration;
 CREATE TABLE Wifi_Registration (
   Seat_Nummer int,
   Ticket_Nummer int,
