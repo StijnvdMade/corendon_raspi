@@ -8,8 +8,8 @@
 -- );
 -- Create database Corendon_Wifi;
 USE Corendon_Wifi;
-CREATE TABLE Wifi_Registration(
-Seat_Nummer int,
-Ticket_Nummer int,
-PRIMARY KEY(Ticket_Nummer)
+CREATE TABLE Wifi_Registration (
+  Seat_Nummer int,
+  Ticket_Nummer int,
+  PRIMARY KEY(Ticket_Nummer)
 );
