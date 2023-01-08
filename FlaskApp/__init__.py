@@ -54,12 +54,12 @@ def login():
          'SELECT * FROM Wifi_Registration WHERE Ticket_Nummer = ?', (flight_no,)
       ).fetchone()
 
-      if flight_no is None:
-         error = 'Incorrect ticket number.'
-      elif seat_no != flight['Seat_Nummer']:
-         return render_template('login.html')
-      elif seat_no is None: 
-         error = 'Ticket is required.'
+      # if flight_no is None:
+      #    error = 'Incorrect ticket number.'
+      # elif seat_no != flight['Seat_Nummer']:
+      #    return render_template('login.html')
+      # elif seat_no is None: 
+      #    error = 'Ticket is required.'
 
       if error is None:
          # session.clear()
@@ -68,6 +68,5 @@ def login():
          return "logged in successfully"
 
       flash(error)
-      return render_template('login.html')
    return render_template('login.html')
 
