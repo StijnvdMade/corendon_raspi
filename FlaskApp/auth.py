@@ -33,8 +33,7 @@ def login():
             return redirect(url_for('index'))
 
         flash(error)
-    print("testetst")
-    return render_template('login.html')
+    return render_template('/templates/login.html')
 
 @bp.before_app_request
 def load_logged_in_user():
