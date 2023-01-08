@@ -62,21 +62,11 @@ def login():
          error = 'Ticket is required.'
 
       if error is None:
-         session.clear()
-         session['user_id'] = flight['id']
-         return redirect(url_for('index'))
+         # session.clear()
+         # session['user_id'] = flight['id']
+         # return redirect(url_for('index'))
+         return "logged in successfully"
 
       flash(error)
    return render_template('login.html')
 
-@app.route('/data')
-def data():
-   # Connecting to database
-   con = sql.connect('Wifi_Registration.db')
-   # Getting cursor
-   c =  con.cursor() 
-   # Adding data
-   c.execute("Insert into Wifi_Registration value(F-05,XD03)")
-   # Applying changes
-   con.commit() 
-   return "inserted"
