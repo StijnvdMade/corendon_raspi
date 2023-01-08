@@ -76,7 +76,7 @@ def data():
    # Getting cursor
    c =  con.cursor() 
    # Adding data
-   c.execute("Insert into Corendon_Wifi value(F-05,XD03)")
+   c.execute("Insert into Wifi_Registration value(F-05,XD03)")
    # Applying changes
    con.commit() 
    return "inserted"
