@@ -54,7 +54,7 @@ def login():
          'SELECT * FROM Wifi_Registration WHERE Ticket_Nummer = ?', (flight_no,)
       ).fetchone()
 
-      if flight_no is None:
+      if flight is None:
          error = 'Incorrect ticket number.'
       elif seat_no != flight['Seat_Nummer']:
          error = 'seat number not correct'
