@@ -56,7 +56,7 @@ def login():
       if flight_no is None:
          error = 'Incorrect ticket number.'
       elif seat_no != flight['Seat_Nummer']:
-         error = 'Incorrect seat number.'
+         return render_template('login.html')
       elif seat_no is None: 
          error = 'Ticket is required.'
 
