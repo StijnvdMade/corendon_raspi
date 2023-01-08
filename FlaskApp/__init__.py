@@ -1,4 +1,6 @@
-from flask import Flask, render_template
+from flask import (
+   Flask, Blueprint, flash, g, redirect, render_template, request, session, url_for
+)
 import os
 
 app = Flask(__name__, instance_relative_config=True)
@@ -38,3 +40,29 @@ def login():
 @app.route('/en')
 def login_en():
    return render_template('login_en.html')
+
+@bp.route('/login', methods=('GET', 'POST'))
+def login():
+   if request.method == 'POST':
+      flight_no = request.form['flight_no']
+      seat_no = request.form['seat_no']
+      db = get_db()
+      error = None
+      flight = db.execute(
+         'SELECT * FROM Wifi_Registration WHERE Ticket_Nummer = ?', (flight_no,)
+      ).fetchone()
+
+      if flight_no is None:
+         error = 'Incorrect ticket number.'
+      elif seat_no != flight['Seat_Nummer']:
+         error = 'Incorrect seat number.'
+      elif seat_no is None: 
+         error = 'Ticket is required.'
+
+      if error is None:
+         session.clear()
+         session['user_id'] = flight['id']
+         return redirect(url_for('index'))
+
+      flash(error)
+   return render_template('login.html')
