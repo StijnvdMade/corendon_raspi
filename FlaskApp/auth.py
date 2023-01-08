@@ -9,59 +9,27 @@ from FlaskApp.db import get_db
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
-@bp.route('/register', methods=('GET', 'POST'))
-def register():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        ticket = request.form['ticket']
-        db = get_db()
-        error = None
-
-        if not username:
-            error = 'Username is required.'
-        elif not password:
-            error = 'Password is required.'
-        elif not ticket:
-            error = 'Ticket is required.'
-
-        if error is None:
-            try:
-                db.execute(
-                    "INSERT INTO user (username, password, ticket) VALUES (?, ?, ?)",
-                    (username, generate_password_hash(password), ticket),
-                )
-                db.commit()
-            except db.IntegrityError:
-                error = f"User {username} is already registered."
-            else:
-                return redirect(url_for("auth.login"))
-
-        flash(error)
-
-    return render_template('auth/register.html')
-
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
     if request.method == 'POST':
-        username = request.form['flight_no']
-        password = request.form['seat_no']
+        flight_no = request.form['flight_no']
+        seat_no = request.form['seat_no']
         db = get_db()
         error = None
-        user = db.execute(
-            'SELECT * FROM user WHERE username = ?', (username,)
+        flight = db.execute(
+            'SELECT * FROM Wifi_Registration WHERE Ticket_Nummer = ?', (flight_no,)
         ).fetchone()
 
-        if user is None:
-            error = 'Incorrect username.'
-        elif not check_password_hash(user['password'], password):
-            error = 'Incorrect password.'
-        elif ticket is None: 
+        if flight_no is None:
+            error = 'Incorrect ticket number.'
+        elif seat_no != flight['Seat_Nummer']:
+            error = 'Incorrect seat number.'
+        elif seat_no is None: 
             error = 'Ticket is required.'
 
         if error is None:
             session.clear()
-            session['user_id'] = user['id']
+            session['user_id'] = flight['id']
             return redirect(url_for('index'))
 
         flash(error)

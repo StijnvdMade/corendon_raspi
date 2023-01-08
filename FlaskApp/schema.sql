@@ -8,9 +8,9 @@
 -- );
 -- Create database Corendon_Wifi;
 -- USE Corendon_Wifi;
-DROP TABLE IF EXISTS Wifi_Registration;
+DROP TABLE IF EXISTS Wifi_Registration ;
 CREATE TABLE Wifi_Registration (
-  Seat_Nummer int,
-  Ticket_Nummer int,
+  Seat_Nummer VARCHAR(4),
+  Ticket_Nummer VARCHAR(10),
   PRIMARY KEY(Ticket_Nummer)
 );
