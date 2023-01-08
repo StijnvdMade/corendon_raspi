@@ -41,7 +41,7 @@ def login():
 def login_en():
    return render_template('login_en.html')
 
-@bp.route('/login', methods=('GET', 'POST'))
+@app.route('/login', methods=('GET', 'POST'))
 def login():
    if request.method == 'POST':
       flight_no = request.form['flight_no']
