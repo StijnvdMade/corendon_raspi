@@ -34,7 +34,7 @@ from . import auth
 app.register_blueprint(auth.bp)
 
 @app.route('/')
-def login():
+def main():
    return render_template('login.html')
 
 @app.route('/en')
