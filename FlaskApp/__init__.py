@@ -51,7 +51,7 @@ def login():
       db = get_db()
       error = None
       flight = db.execute(
-         'SELECT * FROM Wifi_Registration WHERE Ticket_Nummer = ?', (flight_no)
+         'SELECT * FROM Wifi_Registration WHERE Ticket_Nummer = ?', (flight_no,)
       ).fetchone()
 
       if flight_no is None:
