@@ -68,5 +68,6 @@ def login():
          return "logged in successfully"
 
       flash(error)
+      return render_template('login.html')
    return render_template('login.html')
 
