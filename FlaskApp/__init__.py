@@ -29,6 +29,7 @@ if __name__ == "__main__":
 
 from . import db
 db.init_app(app)
+from FlaskApp.db import get_db
 
 from . import auth
 app.register_blueprint(auth.bp)
