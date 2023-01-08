@@ -51,22 +51,23 @@ def login():
       db = get_db()
       error = None
       flight = db.execute(
-         'SELECT * FROM Wifi_Registration WHERE Ticket_Nummer = ?', (flight_no,)
+         'SELECT * FROM Wifi_Registration WHERE Ticket_Nummer = ?', (flight_no)
       ).fetchone()
 
-      # if flight_no is None:
-      #    error = 'Incorrect ticket number.'
+      if flight_no is None:
+         error = 'Incorrect ticket number.'
       # elif seat_no != flight['Seat_Nummer']:
-      #    return render_template('login.html')
-      # elif seat_no is None: 
-      #    error = 'Ticket is required.'
+      #    error = 'seat number not correct'
+      elif seat_no is None: 
+         error = 'Ticket is required.'
 
       if error is None:
          # session.clear()
          # session['user_id'] = flight['id']
          # return redirect(url_for('index'))
-         return "logged in successfully"
+         return "logged in successfully" 
 
       flash(error)
+      return render_template('login.html')
    return render_template('login.html')
 
