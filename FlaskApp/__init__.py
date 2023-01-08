@@ -2,6 +2,7 @@ from flask import (
    Flask, Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
 import os
+import sqlite3 as sql
 
 app = Flask(__name__, instance_relative_config=True)
 # print(os.path.join('/var/www/corendon_raspi/FlaskApp/db', 'db.sqlite'))
@@ -67,3 +68,15 @@ def login():
 
       flash(error)
    return render_template('login.html')
+
+@app.route('/data')
+def data():
+   # Connecting to database
+   con = sql.connect('Wifi_Registration.db')
+   # Getting cursor
+   c =  con.cursor() 
+   # Adding data
+   c.execute("Insert into Corendon_Wifi value(F-05,XD03)")
+   # Applying changes
+   con.commit() 
+   return "inserted"
