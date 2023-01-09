@@ -67,7 +67,7 @@ def login():
          # return redirect(url_for('index'))
          cmdstring = "sudo ipset add whitelisting " + request.remote_addr
          os.system(cmdstring)
-         return "U bent ingelogd!!!!!!!!" + request.remote_addr
+         return "U bent ingelogd!" + request.remote_addr
       
 
       flash(error)
