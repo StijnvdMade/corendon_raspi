@@ -23,7 +23,7 @@ def test():
 
 @app.route('/temp')
 def temp():
-    return "deze pagina werkt"
+   return "deze pagina werkt"
 
 if __name__ == "__main__":
    app.run()
@@ -65,7 +65,8 @@ def login():
          # session.clear()
          # session['user_id'] = flight['id']
          # return redirect(url_for('index'))
-         return "logged in successfully" 
+         os.system(f'sudo ipset add whitelisting {request.remote_addr}')
+      
 
       flash(error)
       return render_template('login.html')
