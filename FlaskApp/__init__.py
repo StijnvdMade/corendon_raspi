@@ -65,9 +65,9 @@ def login():
          # session.clear()
          # session['user_id'] = flight['id']
          # return redirect(url_for('index'))
-         cmdstring = "sudo ipset add whitelisting " + request.remote_addr
+         cmdstring = "sudo /sbin/ipset add whitelisting " + request.remote_addr
          os.system(cmdstring)
-         return "U bent ingelogd!" + request.remote_addr
+         return "U bent ingelogd!" + request.remote_addr + cmdstring
       
 
       flash(error)
