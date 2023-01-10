@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [],
+  content: [
+    "./FlaskApp/templates/**/*.html",
+    "./FlaskApp/static/src/**/*.js"
+  ],
   theme: {
     extend: {},
   },
