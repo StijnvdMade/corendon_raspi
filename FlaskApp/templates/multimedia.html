@@ -61,7 +61,7 @@ position: absolute;
 bottom: 0;
 }
 body {
-  background-image: url('plane.jpg');
+  background-image: url("{{ url_for('static', filename='plane.jpg') }}");
   background-repeat: no-repeat;
   background-attachment: fixed; 
   background-size: 100% 100%;
