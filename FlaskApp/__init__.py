@@ -62,12 +62,9 @@ def login():
          error = 'Ticket is required.'
 
       if error is None:
-         # session.clear()
-         # session['user_id'] = flight['id']
-         # return redirect(url_for('index'))
          cmdstring = "sudo /sbin/ipset add whitelisting " + request.remote_addr
          os.system(cmdstring)
-         return "U bent ingelogd!" + request.remote_addr + cmdstring
+         return render_template('multimedia.html')
       
 
       flash(error)
