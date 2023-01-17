@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Multimedia Page</title> 
+<meta name="author" content="Jurick Gustina"
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+}
+
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color on hover */
+li a:hover {
+  background-color: #555;
+  color: white;
+}
+.active {
+  background-color: #4CAF50;
+  color: white;
+}
+ul {
+  border: 1px solid #555;
+}
+
+li {
+  text-align: center;
+  border-bottom: 1px solid #555;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+</style>
+<style type="text/css">
+.content{
+background: rgba(0, 0, 0, 0.5); /*Black background with 0.5 opacity */
+color: #f1f1f1;
+width: 78%;
+padding: 40px;
+margin: 145px auto;
+font-family: calibri;
+}
+p{
+font-size: 25px;
+color: white;
+}
+.container .content{
+position: absolute;
+bottom: 0;
+}
+body {
+  background-image: url('plane.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  background-size: 100% 100%;
+}
+</style>
+<center>
+<video width="500" height="300" controls>
+  <source src="{{ url_for('static', filename='Vid.mp4') }}" type="video/mp4">
+</video>
+</video>
+</center>
+<div class="content">
+<p>
+<center>
+<h2>English Version</h2>
+</center>
+- Place hand luggage under your seat or over the head bin.(to keep the aisle open for emergency)<br>
+- It is not allowed to smoke electronic cigarettes or any type of tobacco.<br>
+- Every phone must be in airplane mode under the condition of takeoff,landing and when the safety belt light is on.<br>
+- Keep safety belt on at all times if possible.<br>
+- In case of emergency evacuation there are 2 doors in front of the plane 2 in the middle and 2 in the back.<br>
+- In emergency evacuation  the cabin crew will guide you to the nearest exit and if the cabin is in smoke follow the lights in the aisle for the nearest exit.<br>
+- Life jacket is under your seat,When wearing the life jacket wrap it around you and clip it infront.There will be a red tab to inflate the jacket or a red tube to insert air that will also inflate it.<br>
+- In emergency turbulence the flight change a oxygen mask will drop.(Grab the closest mask and wear your mask before helping other)<br>
+<center>
+<h2>Dutch Version</h2>
+</center>
+- Plaats handbagage onder uw stoel of boven het hoofdvak.(om het gangpad open te houden voor noodgevallen)<br>
+- Het is niet toegestaan ​​elektronische sigaretten of welke tabak dan ook te roken.<br>
+- Elke telefoon moet in de vliegtuigmodus staan ​​bij het opstijgen, landen en wanneer het lampje van de veiligheidsgordel brandt.<br>
+- Houd de veiligheidsgordel indien mogelijk altijd om.<br>
+- In geval van nood evacuatie zijn er 2 deuren voor het vliegtuig 2 in het midden en 2 achterin.<br>
+- Bij een noodevacuatie begeleidt het cabinepersoneel u naar de dichtstbijzijnde uitgang en als de cabine in rook staat, volgt u de lichten in het gangpad naar de dichtstbijzijnde uitgang.<br>
+- Reddingsvest bevindt zich onder uw stoel. Wanneer u het reddingsvest draagt, wikkel het dan om u heen en klem het voor u vast. Er zal een rood lipje zijn om het vest op te blazen of een rode buis om lucht in te brengen die het ook zal opblazen.<br>
+- Bij nood turbulentie zal de vlucht wissel een zuurstofmasker laten vallen (pak het dichtstbijzijnde masker en draag uw masker voordat u anderen helpt)<br>
+</p>
+</div>
+<center>
+<b><h2>Safety Card</h2></b>
+<img src="{{ url_for('static', filename='Card1.jpg') }}"  width="290" height="410">
+<img src="{{ url_for('static', filename='Card2.jpg') }}"  width="290" height="410">
+</center>
+</body>
+</html>
