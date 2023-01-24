@@ -65,9 +65,9 @@ def login():
       if error is None:
          cmdstring = "sudo /sbin/ipset add whitelisting " + request.remote_addr
          os.system(cmdstring)
-         time = datetime.now()
-         time = time.strftime("%d/%m/%y")
-         return render_template('multimedia.html', flight_no=flight_no, time=time)
+         date = datetime.now()
+         date = date.strftime("%d/%m/%y")
+         return render_template('multimedia.html', flight_no=flight_no, date=date)
       
 
       flash(error)
