@@ -67,7 +67,7 @@ def login():
          os.system(cmdstring)
          time = datetime.now()
          time = time.strftime("%d/%m/%y")
-         return render_template('multimedia.html', flight_no=flight_no)
+         return render_template('multimedia.html', flight_no=flight_no, time=time)
       
 
       flash(error)
