@@ -1,6 +1,7 @@
 from flask import (
    Flask, Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
+from datetime import datetime
 import os
 import sqlite3 as sql
 
@@ -64,7 +65,9 @@ def login():
       if error is None:
          cmdstring = "sudo /sbin/ipset add whitelisting " + request.remote_addr
          os.system(cmdstring)
-         return render_template('multimedia.html')
+         time = datetime.now()
+         time = time.strftime("%d/%m/%y")
+         return render_template('multimedia.html', flight_no, time)
       
 
       flash(error)
